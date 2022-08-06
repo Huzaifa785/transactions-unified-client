@@ -12,7 +12,7 @@ const PlaidLinkButton = () => {
   useEffect(() => {
     try {
       const createLinkToken = async () => {
-        const response = await fetch("/api/plaid/create_link_token", {
+        const response = await fetch(`/api/plaid/create_link_token`, {
           method: "POST",
         });
         const { link_token } = await response.json();
@@ -27,7 +27,7 @@ const PlaidLinkButton = () => {
   const onSuccess = useCallback(async (public_token, metadata) => {
     try {
       await axios.post(
-        "/api/plaid/accounts/add",
+        `/api/plaid/accounts/add`,
         // send public_token to server
         { public_token, metadata },
         {

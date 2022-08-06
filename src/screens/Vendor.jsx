@@ -86,44 +86,6 @@ function VendorContent() {
     setOpen(!open);
   };
 
-    // Generate Vendor Data
-function createData(id, vendor, amount) {
-  return { id, vendor, amount };
-}
-
-const data = [
-  createData(
-    0,
-    'McDonalds',
-    70.13,
-  ),
-  createData(
-    1,
-    'Spicejet',
-    400.19,
-  ),
-  createData(
-    2,
-    'Urbanclap',
-    77.36,
-  ),
-  createData(
-    3,
-    'Zara',
-    200.97,
-  ),
-  createData(
-    4,
-    'Golden Bakers',
-    200.97,
-  ),
-  createData(
-    5,
-    'Super Mart',
-    200.97,
-  )
-];
-
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -199,7 +161,7 @@ const data = [
               {/* Vendor */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <VendorList data={data} />
+                  <VendorList />
                 </Paper>
               </Grid>
             </Grid>

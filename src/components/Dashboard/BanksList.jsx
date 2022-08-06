@@ -54,7 +54,7 @@ export default function BanksList() {
   useEffect(() => {
     try {
       const getBanks = async () => {
-        const response = await axios.get("/api/plaid/accounts", {
+        const response = await axios.get(`/api/plaid/accounts`, {
           headers: {
             Authorization: `${localStorage.getItem("token")}`,
           },
@@ -73,7 +73,7 @@ export default function BanksList() {
         "Are you sure you want to delete this bank?"
       );
       if (isDelete) {
-        await axios.delete(`/api/plaid/accounts/${id}`, {
+        await axios.delete(`/${process.env.REACT_APP_API_BASE_URL}/api/plaid/accounts/${id}`, {
           headers: {
             Authorization: `${localStorage.getItem("token")}`,
           },

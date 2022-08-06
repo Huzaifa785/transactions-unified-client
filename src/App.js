@@ -14,7 +14,7 @@ import CurrentWeekTransactionsScreen from "./screens/CurrentWeekTransactions";
 import CurrentMonthTransactionsScreen from "./screens/CurrentMonthTransactions";
 import CurrentYearTransactionsScreen from "./screens/CurrentYearTransactions";
 
-import PrivateRoutes from "./utils/PrivateRoutes";
+import PrivateRoutes from "./utils/PrivateRoute";
 
 const App = () => {
   return (

@@ -30,7 +30,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      let login = await axios.post("/api/users/login", { email, password });
+      let login = await axios.post(`/api/users/login`, { email, password });
       window.localStorage.setItem("token", login.data.token);
       window.localStorage.setItem("name", login.data.name);
 

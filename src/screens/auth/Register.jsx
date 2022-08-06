@@ -37,7 +37,7 @@ const Register = () => {
       cpassword,
     };
     try {
-      await axios.post("/api/users/register", userData);
+      await axios.post(`/api/users/register`, userData);
       navigate("/login");
     } catch (error) {
       setErrors([error.response.data]);

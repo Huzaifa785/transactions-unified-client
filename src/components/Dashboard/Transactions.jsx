@@ -153,7 +153,7 @@ export default function Transactions(props) {
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.category}</TableCell>
-              <TableCell>{row.amount}</TableCell>
+              <TableCell>${row.amount}</TableCell>
             </TableRow>
           ))}
 
