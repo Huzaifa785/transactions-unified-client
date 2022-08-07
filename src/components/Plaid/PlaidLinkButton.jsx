@@ -12,14 +12,13 @@ const PlaidLinkButton = () => {
   useEffect(() => {
     try {
       const createLinkToken = async () => {
-        const response = await fetch(`/plaid/create_link_token`, {
-          method: "POST",
+        const response = await AxiosInstance.post("/plaid/create_link_token", {
           headers: {
-            Authorization: `${localStorage.getItem("token")}`,
             "Content-Type": "application/json",
-            "Accept": "application/json",
+            Authorization: `${localStorage.getItem("token")}`,
           },
         });
+
         const { link_token } = await response.json();
         setToken(link_token);
       };
