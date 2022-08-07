@@ -14,6 +14,11 @@ const PlaidLinkButton = () => {
       const createLinkToken = async () => {
         const response = await fetch(`/plaid/create_link_token`, {
           method: "POST",
+          headers: {
+            Authorization: `${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
         });
         const { link_token } = await response.json();
         setToken(link_token);
