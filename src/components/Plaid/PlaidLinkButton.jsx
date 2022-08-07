@@ -19,7 +19,7 @@ const PlaidLinkButton = () => {
           },
         });
 
-        const { link_token } = await response.json();
+        const { link_token } = response.data;
         setToken(link_token);
       };
       createLinkToken();
