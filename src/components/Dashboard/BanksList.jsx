@@ -58,6 +58,8 @@ export default function BanksList() {
         const response = await AxiosInstance.get(`/plaid/accounts`, {
           headers: {
             Authorization: `${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
           },
         });
         setBanks(response.data);

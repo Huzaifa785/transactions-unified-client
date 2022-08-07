@@ -3,7 +3,6 @@ import React, { useCallback, useState, useEffect } from "react";
 
 import { usePlaidLink } from "react-plaid-link";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import axios from "axios";
 import { AxiosInstance } from "../../utils/AxiosInstance";
 
 const PlaidLinkButton = () => {
