@@ -9,6 +9,7 @@ import { Box } from "@mui/system";
 import PlaidLinkButton from "../Plaid/PlaidLinkButton";
 import { useEffect } from "react";
 import axios from "axios";
+import { AxiosInstance } from "../../utils/AxiosInstance";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -54,7 +55,7 @@ export default function BanksList() {
   useEffect(() => {
     try {
       const getBanks = async () => {
-        const response = await axios.get(`/api/plaid/accounts`, {
+        const response = await AxiosInstance.get(`/plaid/accounts`, {
           headers: {
             Authorization: `${localStorage.getItem("token")}`,
           },
@@ -73,7 +74,7 @@ export default function BanksList() {
         "Are you sure you want to delete this bank?"
       );
       if (isDelete) {
-        await axios.delete(`/${process.env.REACT_APP_API_BASE_URL}/api/plaid/accounts/${id}`, {
+        await axios.delete(`/plaid/accounts/${id}`, {
           headers: {
             Authorization: `${localStorage.getItem("token")}`,
           },

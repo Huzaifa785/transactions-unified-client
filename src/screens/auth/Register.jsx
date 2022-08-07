@@ -16,6 +16,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
+import { AxiosInstance } from "../../utils/AxiosInstance";
 
 const theme = createTheme();
 
@@ -37,7 +38,7 @@ const Register = () => {
       cpassword,
     };
     try {
-      await axios.post(`/api/users/register`, userData);
+      await AxiosInstance.post(`/users/register`, userData);
       navigate("/login");
     } catch (error) {
       setErrors([error.response.data]);

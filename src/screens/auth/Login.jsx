@@ -14,10 +14,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
+import { AxiosInstance } from "../../utils/AxiosInstance";
 
 const theme = createTheme();
 
@@ -30,7 +30,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      let login = await axios.post(`/api/users/login`, { email, password });
+      let login = await AxiosInstance.post(`/users/login`, { email, password });
       window.localStorage.setItem("token", login.data.token);
       window.localStorage.setItem("name", login.data.name);
 
