@@ -19,6 +19,7 @@ import { TableHead } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { Button } from "@mui/material";
 import { CSVLink } from "react-csv";
+import { useState, useEffect } from "react";
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -95,7 +96,9 @@ export default function Transactions(props) {
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - props.transactions.length) : 0;
+    page > 0
+      ? Math.max(0, (1 + page) * rowsPerPage - props.transactions.length)
+      : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -118,6 +121,26 @@ export default function Transactions(props) {
       ];
     }),
   ];
+
+  // get the account name from the account id from the server without props
+  const [accountNames, setAccountNames] = useState([]);
+
+  const getAccountNames = async (accountId) => {
+    for (let i = 0; i < props.accounts.length; i++) {
+      if (props.accounts[i].id === accountId) {
+        return props.accounts[i].name;
+      }
+    }
+  };
+
+  useEffect(() => {
+      try {
+        
+      }
+      catch (error) {
+        console.log(error);
+    }
+  }, [props.transactions]);
 
   return (
     <TableContainer component={Paper}>
@@ -143,7 +166,10 @@ export default function Transactions(props) {
         </TableHead>
         <TableBody>
           {(rowsPerPage > 0
-            ? props.transactions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            ? props.transactions.slice(
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+              )
             : props.transactions
           ).map((row) => (
             <TableRow key={row.transaction_id}>
@@ -199,7 +225,7 @@ export default function Transactions(props) {
           >
             Download report
           </CSVLink>
-        </Button>   
+        </Button>
       ) : null}
     </TableContainer>
   );
